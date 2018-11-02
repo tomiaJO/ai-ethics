@@ -1,0 +1,11 @@
+---
+title: "Machine Bias"
+author: "Tamas Koncz"
+date: '2018-11-04'
+tags:
+- ai
+- ethics
+- bias
+categories: ethics
+---
+   
