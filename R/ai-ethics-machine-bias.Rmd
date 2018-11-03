@@ -2,10 +2,89 @@
 title: "Machine Bias"
 author: "Tamas Koncz"
 date: '2018-11-04'
+bibliography: ai-ethics-machine-bias-references.bib
 tags:
 - ai
 - ethics
 - bias
 categories: ethics
 ---
-   
+**Recently I had the chance to attend the excellent [CRUNCH Conference](https://www.crunchconf.com/), where among the speakers was [Chris Stucchio](https://twitter.com/stucchio), who gave an amazing talk titled _AI Ethics, Impossibility Theorems and Tradeoffs_. This motivated me to dust off (and update slightly) a uni paper I wrote, and publish it here.**
+
+<br>
+
+### The problem
+
+Machine bias arise when a model used to drive real-life decisions is influenced by the assumptions and prejudice of its human creators or the data it was trained on [@becominghuman].  
+
+Applications of Machine Learning are spreading exponentially – and deployment is just becoming more accessible than ever, by the likes of Google, Amazon, and Microsoft offering to create “hands off” solutions even for people with limited technical understanding. Machine learning and other statistical methods are finding their ways into the more sensitive areas of life as well, like law, medicine or the job markets [@techrew2]. However, any such model will be just as good as the data it inherently learned from – if that data does not represent an objective truth, then we have a problem.  
+
+### Where things went wrong in the past
+
+Even if research into this area is still limited (as mentioned in [this article](http://www.pbs.org/wgbh/nova/next/tech/ai-bias/) from 2017), I’ll list already known cases where things went wrong, to facilitate understanding of the issue’s depth for our society.  
+
+The most troubling area might be something called “risk assessment modeling” [@techrew4], where models are applied to predict the likelihood of a negative outcome happening, like a default on a loan or a [criminal convict re-offending](https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing). Even though these models are generally instructed (either by the programmers or maybe even legally) to omit certain attributes such as race, if they are built in a process lacking cultural awareness, the likely outcome is that certain groups will end up being marginalized and punished for their demographics [@towardsds]. How does this happen? Even if the algorithm does not use race directly, bias might creep in through other factors, like education level and neighborhood, which show high correlation with race itself.  
+
+Another area of high impact is the job market, where applicants are being screened by algorithms every second around the globe [@techrew1]. Models are typically trained to look for candidates who have similar profiles than people who got marked “succeeding” in the job type. However, success is usually relatively measured – in male-dominated fields, like finance, the training data will be imbalanced in showing good workers from the two genders. And even if gender is not among the predictor variables, first names or other factors might let it leak back into the models. Google Ads is reported to show multiple times more high paying jobs to males than to females, since in the population males are more likely to currently fill those positions [@becominghuman].  
+
+As my last example, an emerging area which is hit by bias is image recognition. This might sound surprising at first, since we would think that images are not likely to carry human bias. But how you collect them does – in the US, most facial recognition systems are trained on significantly more white faces than on others (in China, the trends are the other way around). Quality control of these models are typically done by non-dark-skinned engineers. The result? Failing passport systems, webcams, not to mention [Google’s “ape controversy”](https://www.theverge.com/2018/1/12/16882408/google-racist-gorillas-photo-recognition-algorithm-ai) [@pbsaibias].  
+
+### But it's still not worse than humans?
+
+Many times, I’ve heard references to human fallacies and bias as counterargument against the importance of dealing with machine bias. If the “alternative” is not better either, why should we be bothered? Honestly, most times I consider those arguments destructive. The simple reasoning that something is not broken, because others are not better either, should be labeled faulty logic.   
+
+What I don’t question however is that humans are not better. Humans are the reason how bias got into machines in the first place, by creating the biased learning sets. We tend to anchor in our thinking, overweight more available experiences, look for confirmation to ourselves, or assume stability and the lack of changes in the environment [@mck1].   
+
+One of my favorite examples of how fallible we are is about crash testing of cars [@washpost]. Until recently, the crash tests were almost exclusively conduct on “male” dummies in the US. By 2011, the federal government started using a “female” dummy as well for some tests. The results were shocking – there was a large gap between the safety rating achieved with male and female dummies. The reason? The “female” was smaller in body size, hence it is impacted differently in an accident (just as other smaller sized people would, including children). The higher risk is backed up by other government data as well – female fatalities and serious injuries are smaller in absolute numbers (given generally less females take the road than males) but the relative ratios are higher. Still, they did not get much attention until recently. The safety rating system is a model as well (although “man-made”). Based on certain inputs (dummy crash data) it will generate an output (safety stars). Millions and millions of people are buying cars each year based on this system, believing in the ratings as the main indicator of safeness their car offers for them and their families. But as they don’t understand how this rating is generated, they will not know about the bias it inherits. Even without being overly dramatic, those bias might cost them their lives – unless they are the same generic size and shape as dummies on which testing was done.  
+
+So, by now we know that humans are likely not better at their judgments, that are suffering from the same flaws and bias just like machine made ones. Then again, why should we care so much about algorithms not being perfectly fair?  
+
+### Hard-coding bias
+
+In my view, we run a large risk of institutionalizing biased decision making by the use of flawed models. Or as Cathy O’Neil, author of Weapons of Math Destruction called it, we are “automating the status quo” [@pbsaibias], which might not be the state we want to be in.   
+
+Data science is about optimizing the use of resources, and achieving the best result possible. However, this optimization happens on the aggregate level, and it might not be beneficial for each and every sample, for each and every record in the dataset. Those rows many times represent human beings, who deserve to be treated fairly and along equal guidelines.  
+
+We know that unfortunately this might not happen even if a human is making those decisions. But those decisions are not systematically biased – if they are wrong, that is due to the thought process, perception and filters of an individual. This is a bottom-up problem: even if loan officers, judges or policemen all show similar influences in their decisions, this does not mean necessarily that the system is flawed. It might not correct for these issues, but it does not cause them.  
+
+At the same time, machine bias are results of systematic issues – they are top-down, in the sense that the decision-making mechanism will have flaws that result in individual cases being treated improperly. And by their nature, these flaws will sacrifice individual accuracy over the aggregate. And doing so, they can create a feedback loop. Females are not shown the higher paying jobs because they currently less likely to have them according to training data, and this make them less likely to get those jobs in the future. Minorities are marginalized further by undeserved treatment that they might be assigned. And the list goes on.   
+
+At the end, it is never the models that are to blame. They are tools used by us, humans to “help” in how we operate. The real problem is the misunderstanding and misinformation of technology [@techrew3].  People lacking a deeper technical understanding tend to place more trust in model generated decisions, as the math involved gives them a glory of objectiveness, and as they are not human, they thought to be avoid of bias.  
+
+### The way forward
+
+Companies so far have not shown much effort to correct for these issues (with a limited number of exceptions). They are profit oriented; cost and time pressure are both making it hard to allocate attention to solving a problem that does not materialize directly in the bottom lines. Meaningful regulation is also lagging behind – the US has arguably even taken a considerable step back on its AI policy during the Trump administration [@techrew3].  
+
+Any impactful solution will have to materialize on three different levels:  
+
+##### 1.	User understanding  
+
+People who put their trust in these models need to be educated about their inner workings. This will help avoid misuse, but it’s far less than enough by itself.  
+
+##### 2.	Data scientist  
+
+Their task is the most straightforward – fix data and fix models. The next paragraphs go into detail to show this can be done.  
+
+##### 3.	Executive understanding  
+
+Leaders need to know when using machine learning is the right choice. But their role goes further – there is no clear definition or a mathematical formula for fairness. A broader debate should be encouraged to decide what we prioritize, and what models optimize for, rather than just leaving it up to the engineers to decide. More oversight is also desirable.  
+
+Data scientist alone won’t solve this problem – but that doesn’t mean there is not so much they could do to make things better.   
+
+A possible thing to do would be applying rigorous validation methods before these models can go to production - something banks are already required to do so with their risk management practices [@mck1]. Not just technical decisions should be questioned – key assumptions should be reviewed and approved by subject matter experts. Premortem exercises need to spread. And once these models are in production, they must not be left unattended – continuous oversight is necessary.  
+
+Another step would be increasing transparency, balancing it against performance [@sloan]. More transparent models are easier to interpret, making it possible to highlight factors important for decisions made. This is easier said than done unfortunately. The Department of Defense has noted that the key stumbling block for AI’s further military use is explainability, or the lack thereof it [@techrew3]. Any explanations are likely to be simplified with the current methodologies. When models are built, data in most cases is unavailable on the real driving forces for the inspected process – rather, these models are built on correlated features. And often times the more complex the model, the better it is at deriving results from these correlations (keep in mind that correlation is not causation, hence these results are never deterministic). As the models have to be built this way, it’s virtually impossible to strip data of anything that is not directly related to the question, making “policing” the results incredibly important.  
+
+A recent paper [@auditblackbox] by high-profile researchers investigates what solutions are available when simply building a transparent model is not an option (as those models might not offer acceptable performance).  
+
+The currently applied practices in the industry are removing, permuting or obscuring a given feature to analyze how it impacts performance. However, this is usually done on a set of pre-selected features (if it’s done at all), hence the likelihood of detecting bias that are not known to exist a priori is smaller.  
+
+The paper describes a new method for achieving better transparency. First, a complex model is built as usual. This is called the teacher. Then, a second, more transparent (for example a linear regression) is built to predict the outputs of the teacher. This second model is called the student. The student, the distilled model will have differences in its results – these should be investigated, and explained for differences. Such a thought exercise helps, as there is no need to know what biases to look for beforehand.      
+
+What all technical solutions boil down to at the end is increasing consciousness about the unconscious bias in data, and the flaws of the current state of machine learning. People in data science will have to step up – [“I’m just an engineer”](https://www.theverge.com/2018/4/26/17285058/predictive-policing-predpol-pentagon-ai-racial-bias)  should not be the answer anymore.  
+
+Big data is here to stay. Machine Learning as well. However, as many have noted before, it gives as an incredible opportunity to revisit assumptions, make decision truly data driven, and help advance society [@whitehouse]. We should take it.  
+
+<br>
+
+### References
